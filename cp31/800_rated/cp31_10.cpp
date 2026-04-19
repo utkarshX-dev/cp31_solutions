@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 using ll = long long;
 using ld = long double;
 using pii = pair<int, int>;
@@ -29,34 +28,28 @@ ll gcd(ll a, ll b) {
     return b ? gcd(b, a % b) : a;
 }
 
+int getPoints(int i, int j){
+    if(i == 0 || j == 0 || i == 9 || j == 9){
+        return 1;
+    }else if(i == 1 || j == 1 || i == 8 || j == 8){
+        return 2;
+    }else if(i == 2 || j == 2 || i == 7 || j == 7){
+        return 3;
+    }else if(i == 3 || j == 3 || i == 6 || j == 6){
+        return 4;
+    }else return 5;
+}
+
 void solve() {
-    int n, m;
-    cin >> n >> m;
-
-    if(n == m){
-        //check is s1 is possible after rotation or not
-    }
-
-    string s1, s2;
-    cin >> s1 >> s2;
-
-    int opsCnt = 0;
-
-    while(s1.length() < s2.length()){
-        s1 += s1;
-        opsCnt++;
-    }
-
-    for(int i = 0; i <= s1.length() - m; i++){
-        if(s1.substr(i, m) == s2){
-            cout << opsCnt << endl;
-            return;
+    int res = 0;
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 10; j++){
+            char ch;
+            cin >> ch;
+            if(ch == 'X') res += getPoints(i, j);
         }
     }
-
-    cout << -1 << endl;
-    
-    return;
+    cout << res << endl;
 }
 
 int main() {

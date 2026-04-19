@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 using ll = long long;
 using ld = long double;
 using pii = pair<int, int>;
@@ -30,33 +29,22 @@ ll gcd(ll a, ll b) {
 }
 
 void solve() {
-    int n, m;
-    cin >> n >> m;
+    int n, k;
+    cin >> n >> k;
 
-    if(n == m){
-        //check is s1 is possible after rotation or not
-    }
-
-    string s1, s2;
-    cin >> s1 >> s2;
-
-    int opsCnt = 0;
-
-    while(s1.length() < s2.length()){
-        s1 += s1;
-        opsCnt++;
-    }
-
-    for(int i = 0; i <= s1.length() - m; i++){
-        if(s1.substr(i, m) == s2){
-            cout << opsCnt << endl;
-            return;
+    vector<int> a(n);
+    bool found = false;
+    for (int i = 0; i < n; i++){
+        cin >> a[i];
+        if(a[i] == k){
+            found = true;
         }
     }
-
-    cout << -1 << endl;
-    
-    return;
+    if(found){
+        cout << "YES" << endl;
+        return;
+    }
+    else cout << "NO" << endl;
 }
 
 int main() {
